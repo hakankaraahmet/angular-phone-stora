@@ -3,7 +3,7 @@ export class Iphone {
   public price: number;
   public mainImage: string;
   public color: string;
-  public screenSize: string;
+  public screenSize: number;
   public description: string;
   public sku: string;
   public model: string;
@@ -14,7 +14,7 @@ export class Iphone {
     price: number,
     mainImage: string,
     color: string,
-    screenSize: string,
+    screenSize: number,
     description: string,
     sku: string,
     model: string,

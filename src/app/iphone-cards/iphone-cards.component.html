@@ -1,1 +1,21 @@
-<p>iphone-cards works!</p>
+<div class="cards-container">
+  <div *ngFor="let iphone of iPhoneList">
+    <div class="card-container">
+      <img src="{{ iphone.mainImage }}" class="card-image" />
+      <div class="card-info">
+        <div class=" card-header">{{ iphone.name }}-({{ iphone.model }})</div>
+        <div class="card-feature">{{ iphone.price }} tl</div>
+        <div class="card-feature">
+          {{ iphone.color }}
+        </div>
+        <div class="card-feature">{{ iphone.screenSize }} inch</div>
+        <div class="card-feature">
+          {{ iphone.sku }}
+        </div>
+        <div class="card-feature">
+          {{ iphone.description }}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
