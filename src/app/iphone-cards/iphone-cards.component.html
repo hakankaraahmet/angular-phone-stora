@@ -18,14 +18,21 @@
           </div>
         </div>
         <div class="card-button-container">
-          <button class="card-button" style="background-color: rgb(22, 22, 69); margin-right: 16px;">
+          <button
+            class="card-button"
+            style="background-color: rgb(22, 22, 69); margin-right: 16px"
+          >
             Update</button
-          ><button class="card-button" style="background-color: rgb(176, 56, 56)">Delete</button>
+          ><button
+            (click)="onDelete(iphone.id)"
+            class="card-button"
+            style="background-color: rgb(176, 56, 56)"
+          >
+            Delete
+          </button>
         </div>
       </div>
     </div>
   </div>
-  <div class="add-card-button" (click)="onRouteCreate()">
-    Add 
-  </div>
+  <div class="add-card-button" (click)="onRouteCreate()">Add</div>
 </div>

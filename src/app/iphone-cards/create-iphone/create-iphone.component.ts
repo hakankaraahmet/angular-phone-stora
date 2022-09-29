@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import * as fromApp from '../../store/app.reducer';
-import * as IphoneCardsAction from "../store/iphone-cards.actions"
+import * as IphoneCardsAction from '../store/iphone-cards.actions';
 
 @Component({
   selector: 'app-create-iphone',
@@ -11,8 +12,9 @@ import * as IphoneCardsAction from "../store/iphone-cards.actions"
 })
 export class CreateIphoneComponent implements OnInit {
   createPhoneForm: FormGroup;
+  id: number = Math.floor(Math.random() * 100);
 
-  constructor(private store: Store<fromApp.AppState>,) {}
+  constructor(private store: Store<fromApp.AppState>, private router: Router) {}
 
   ngOnInit(): void {
     this.createPhoneForm = new FormGroup({
@@ -24,13 +26,16 @@ export class CreateIphoneComponent implements OnInit {
       screenSize: new FormControl(null, Validators.required),
       description: new FormControl(null, Validators.required),
       sku: new FormControl(null, Validators.required),
+      id: new FormControl(null),
     });
   }
 
   onSubmit() {
-    console.log(this.createPhoneForm.value)
+    this.createPhoneForm.value.id = this.id;
     this.store.dispatch(
-      new IphoneCardsAction.AddIphone(this.createPhoneForm.value)
-    )
+      IphoneCardsAction.addIphone({ iphone: this.createPhoneForm.value })
+    );
+    this.createPhoneForm.reset();
+    this.router.navigate(['/iphone-cards']);
   }
 }

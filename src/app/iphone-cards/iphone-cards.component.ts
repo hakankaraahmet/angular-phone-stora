@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { Iphone } from './iphone.model';
 import * as fromApp from '../store/app.reducer';
 import { Router } from '@angular/router';
+import * as IphoneCardsAction from "./store/iphone-cards.actions"
 
 @Component({
   selector: 'app-iphone-cards',
@@ -22,5 +23,9 @@ export class IphoneCardsComponent implements OnInit {
 
   onRouteCreate(){
     this.router.navigate(['/create-iphone'])
+  }
+
+  onDelete(id:number){
+
   }
 }

@@ -1,4 +1,5 @@
 import { Iphone } from '../iphone.model';
+import { Action, createReducer, on } from '@ngrx/store';
 import * as IphoneCardsActions from './iphone-cards.actions';
 
 export interface State {
@@ -54,24 +55,25 @@ const initialState: State = {
   ],
 };
 
-export function IphoneCardsReducer(
-  state: State = initialState,
-  action: any | IphoneCardsActions.IphoneCardsActions 
-) {
-  switch (action.type) {
-    case IphoneCardsActions.ADD_IPHONE:
-      return {
-        ...state,
-        iphoneList: [...state.iphoneList, action.payload],
-      };
-    case IphoneCardsActions.DELETE_IPHONE:
-      return {
-        ...state,
-        iphoneList: state.iphoneList.filter((iphone, index) => {
-          return index !== action.payload;
-        }),
-      };
-    default:
-      return state;
-  }
+const _iphoneReducer = createReducer(
+  initialState,
+  on(
+    IphoneCardsActions.addIphone,
+    (state,action) => ({
+      ...state,
+      iphoneList: state.iphoneList.concat({...action.iphone})
+    })
+  ),
+
+  on(
+    IphoneCardsActions.deleteIphone,
+    (state,action) => ({
+      ...state,
+      iphoneList: state.iphoneList.filter((_, index) => index !== action.index)
+    })
+  )
+)
+
+export function IphoneCardsReducer(state : State | any,action: Action){
+  return _iphoneReducer(state,action)
 }
