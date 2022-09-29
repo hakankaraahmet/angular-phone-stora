@@ -10,6 +10,7 @@ import { OffersComponent } from './offers/offers.component';
 import * as fromApp from './store/app.reducer';
 import { CreateIphoneComponent } from './iphone-cards/create-iphone/create-iphone.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule} from "@angular/common/http"
 
 @NgModule({
   declarations: [
@@ -17,10 +18,11 @@ import { ReactiveFormsModule } from '@angular/forms';
     IphoneCardsComponent,
     AccessoriesCardsComponent,
     OffersComponent,
-    CreateIphoneComponent
+    CreateIphoneComponent,
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule,
     ReactiveFormsModule,
     StoreModule.forRoot(fromApp.appReducer)
