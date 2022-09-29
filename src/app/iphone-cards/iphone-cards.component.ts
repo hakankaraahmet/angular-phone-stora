@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
 import { Iphone } from './iphone.model';
+import * as fromIphone from './store/iphone-cards.reducer';
 
 @Component({
   selector: 'app-iphone-cards',
@@ -7,54 +10,14 @@ import { Iphone } from './iphone.model';
   styleUrls: ['./iphone-cards.component.css'],
 })
 export class IphoneCardsComponent implements OnInit {
-  iPhoneList: Iphone[] = [
-    new Iphone(
-      'Iphone SE',
-      14000,
-      'https://cdn.cimri.io/image/1000x1000/appleiphonesegbinmpakllceptelefonu_232395062.jpg',
-      'red',
-      4.7,
-      'Easy to use',
-      'ZG011AQA',
-      'SE 2020',
-      0
-    ),
-    new Iphone(
-      'Iphone SE',
-      14000,
-      'https://cdn.cimri.io/image/1000x1000/appleiphonesegbinmpakllceptelefonu_232395062.jpg',
-      'red',
-      4.7,
-      'Easy to use',
-      'ZG011AQA',
-      'SE 2020',
-      1
-    ),
-    new Iphone(
-      'Iphone SE',
-      14000,
-      'https://cdn.cimri.io/image/1000x1000/appleiphonesegbinmpakllceptelefonu_232395062.jpg',
-      'red',
-      4.7,
-      'Easy to use',
-      'ZG011AQA',
-      'SE 2020',
-      2
-    ),
-    new Iphone(
-      'Iphone SE',
-      14000,
-      'https://cdn.cimri.io/image/1000x1000/appleiphonesegbinmpakllceptelefonu_232395062.jpg',
-      'red',
-      4.7,
-      'Easy to use',
-      'ZG011AQA',
-      'SE 2020',
-      3
-    ),
-  ];
+  iphoneList: any;
 
-  constructor() {}
+  constructor(private store: Store<fromIphone.State>) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    // this.iphoneList = this.store.select('iphoneList');
+   this.store.subscribe(s => this.iphoneList = s)
+   this.iphoneList = this.iphoneList.iphone.iphoneList
+   console.log(this.iphoneList)
+  }
 }

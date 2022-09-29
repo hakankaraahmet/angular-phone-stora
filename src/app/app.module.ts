@@ -1,11 +1,13 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { StoreModule } from '@ngrx/store';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { IphoneCardsComponent } from './iphone-cards/iphone-cards.component';
 import { AccessoriesCardsComponent } from './accessories-cards/accessories-cards.component';
 import { OffersComponent } from './offers/offers.component';
+import * as fromApp from './store/app.reducer';
 
 @NgModule({
   declarations: [
@@ -16,7 +18,8 @@ import { OffersComponent } from './offers/offers.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    StoreModule.forRoot(fromApp.appReducer)
   ],
   providers: [],
   bootstrap: [AppComponent]
