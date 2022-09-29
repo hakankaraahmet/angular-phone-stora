@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Store } from '@ngrx/store';
+import * as fromApp from '../../store/app.reducer';
+import * as IphoneCardsAction from "../store/iphone-cards.actions"
 
 @Component({
   selector: 'app-create-iphone',
@@ -9,22 +12,25 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 export class CreateIphoneComponent implements OnInit {
   createPhoneForm: FormGroup;
 
-  constructor() {}
+  constructor(private store: Store<fromApp.AppState>,) {}
 
   ngOnInit(): void {
     this.createPhoneForm = new FormGroup({
-      phonename: new FormControl(null, Validators.required),
+      name: new FormControl(null, Validators.required),
       model: new FormControl(null, Validators.required),
       price: new FormControl(null, Validators.required),
-      image: new FormControl(null, Validators.required),
+      mainImage: new FormControl(null, Validators.required),
       color: new FormControl(null, Validators.required),
-      screensize: new FormControl(null, Validators.required),
+      screenSize: new FormControl(null, Validators.required),
       description: new FormControl(null, Validators.required),
       sku: new FormControl(null, Validators.required),
     });
   }
 
   onSubmit() {
-    console.log(this.createPhoneForm)
+    console.log(this.createPhoneForm.value)
+    this.store.dispatch(
+      new IphoneCardsAction.AddIphone(this.createPhoneForm.value)
+    )
   }
 }

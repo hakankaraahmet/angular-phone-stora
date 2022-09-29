@@ -3,13 +3,13 @@
     <div class="form-control">
       <label class="form-label"> Phone Name: </label>
 
-      <input formControlName="phonename" class="form-input" />
+      <input formControlName="name" class="form-input" />
     </div>
     <div
       class="helper-message"
       *ngIf="
-        !createPhoneForm.get('phonename')?.valid &&
-        createPhoneForm.get('phonename')?.touched
+        !createPhoneForm.get('name')?.valid &&
+        createPhoneForm.get('name')?.touched
       "
     >
       Please Enter a valid phone name!
@@ -30,7 +30,12 @@
     </div>
     <div class="form-control">
       <label class="form-label"> Price: </label>
-      <input formControlName="price" class="form-input" type="number" placeholder="TL"/>
+      <input
+        formControlName="price"
+        class="form-input"
+        type="number"
+        placeholder="TL"
+      />
     </div>
     <div
       class="helper-message"
@@ -43,14 +48,14 @@
     </div>
     <div class="form-control">
       <label class="form-label" > Image: </label>
-      <input formControlName="image" id="upload" type="file" accept="image/*" hidden/>
-      <label for="upload" class="file-input">Choose file</label>
+      <input formControlName="mainImage" class="form-input" />
+      <!-- <label for="upload" class="file-input">Choose file</label> -->
     </div>
     <div
       class="helper-message"
       *ngIf="
-        !createPhoneForm.get('image')?.valid &&
-        createPhoneForm.get('image')?.touched
+        !createPhoneForm.get('mainImage')?.valid &&
+        createPhoneForm.get('mainImage')?.touched
       "
     >
       Please Upload a valid image!
@@ -70,13 +75,18 @@
     </div>
     <div class="form-control">
       <label class="form-label"> Screen size: </label>
-      <input formControlName="screensize" class="form-input" type="number" placeholder="inch"/>
+      <input
+        formControlName="screenSize"
+        class="form-input"
+        type="number"
+        placeholder="inch"
+      />
     </div>
     <div
       class="helper-message"
       *ngIf="
-        !createPhoneForm.get('screensize')?.valid &&
-        createPhoneForm.get('screensize')?.touched
+        !createPhoneForm.get('screenSize')?.valid &&
+        createPhoneForm.get('screenSize')?.touched
       "
     >
       Please Enter a valid Screen Size!
@@ -84,12 +94,12 @@
     <div class="form-control">
       <label class="form-label"> Description: </label>
       <textarea
-      formControlName="sku"
-      class="form-input"
-      rows="3"
-      style="resize: none"
-    ></textarea>
-
+        formControlName="description"
+        class="form-input"
+        rows="3"
+        style="resize: none"
+      >
+      </textarea>
     </div>
     <div
       class="helper-message"
