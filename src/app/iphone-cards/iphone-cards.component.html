@@ -1,21 +1,31 @@
-<div class="cards-container">
-  <div *ngFor="let iphone of iphoneList">
-    <div class="card-container">
-      <img src="{{ iphone.mainImage }}" class="card-image" />
-      <div class="card-info">
-        <div class=" card-header">{{ iphone.name }}-({{ iphone.model }})</div>
-        <div class="card-feature">{{ iphone.price }} tl</div>
-        <div class="card-feature">
-          {{ iphone.color }}
+<div class="iphone-page-container">
+  <div class="cards-container">
+    <div *ngFor="let iphone of iphoneList">
+      <div class="card-container">
+        <img src="{{ iphone.mainImage }}" class="card-image" />
+        <div class="card-info">
+          <div class="card-header">{{ iphone.name }}-({{ iphone.model }})</div>
+          <div class="card-feature">{{ iphone.price }} tl</div>
+          <div class="card-feature">
+            {{ iphone.color }}
+          </div>
+          <div class="card-feature">{{ iphone.screenSize }} inch</div>
+          <div class="card-feature">
+            {{ iphone.sku }}
+          </div>
+          <div class="card-feature">
+            {{ iphone.description }}
+          </div>
         </div>
-        <div class="card-feature">{{ iphone.screenSize }} inch</div>
-        <div class="card-feature">
-          {{ iphone.sku }}
-        </div>
-        <div class="card-feature">
-          {{ iphone.description }}
+        <div class="card-button-container">
+          <button class="card-button" style="background-color: rgb(22, 22, 69); margin-right: 16px;">
+            Update</button
+          ><button class="card-button" style="background-color: rgb(176, 56, 56)">Delete</button>
         </div>
       </div>
     </div>
+  </div>
+  <div class="add-card-button">
+    Add 
   </div>
 </div>
