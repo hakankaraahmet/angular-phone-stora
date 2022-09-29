@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AccessoriesCardsComponent } from './accessories-cards/accessories-cards.component';
+import { CreateIphoneComponent } from './iphone-cards/create-iphone/create-iphone.component';
 import { IphoneCardsComponent } from './iphone-cards/iphone-cards.component';
 import { OffersComponent } from './offers/offers.component';
 
@@ -9,6 +10,7 @@ const routes: Routes = [
   { path: 'offers', component: OffersComponent },
   { path: 'iphone-cards', component: IphoneCardsComponent },
   { path: 'accessories-cards', component: AccessoriesCardsComponent },
+  {path: "create-iphone" , component: CreateIphoneComponent}
 ];
 
 @NgModule({

@@ -1,0 +1,124 @@
+<div class="form-container">
+  <form [formGroup]="createPhoneForm" (ngSubmit)="onSubmit()">
+    <div class="form-control">
+      <label class="form-label"> Phone Name: </label>
+
+      <input formControlName="phonename" class="form-input" />
+    </div>
+    <div
+      class="helper-message"
+      *ngIf="
+        !createPhoneForm.get('phonename')?.valid &&
+        createPhoneForm.get('phonename')?.touched
+      "
+    >
+      Please Enter a valid phone name!
+    </div>
+
+    <div class="form-control">
+      <label class="form-label"> Model: </label>
+      <input formControlName="model" class="form-input" />
+    </div>
+    <div
+      class="helper-message"
+      *ngIf="
+        !createPhoneForm.get('model')?.valid &&
+        createPhoneForm.get('model')?.touched
+      "
+    >
+      Please Enter a valid Model!
+    </div>
+    <div class="form-control">
+      <label class="form-label"> Price: </label>
+      <input formControlName="price" class="form-input" type="number" placeholder="TL"/>
+    </div>
+    <div
+      class="helper-message"
+      *ngIf="
+        !createPhoneForm.get('price')?.valid &&
+        createPhoneForm.get('price')?.touched
+      "
+    >
+      Please Enter a valid Price!
+    </div>
+    <div class="form-control">
+      <label class="form-label" > Image: </label>
+      <input formControlName="image" id="upload" type="file" accept="image/*" hidden/>
+      <label for="upload" class="file-input">Choose file</label>
+    </div>
+    <div
+      class="helper-message"
+      *ngIf="
+        !createPhoneForm.get('image')?.valid &&
+        createPhoneForm.get('image')?.touched
+      "
+    >
+      Please Upload a valid image!
+    </div>
+    <div class="form-control">
+      <label class="form-label"> Color: </label>
+      <input formControlName="color" class="form-input" />
+    </div>
+    <div
+      class="helper-message"
+      *ngIf="
+        !createPhoneForm.get('color')?.valid &&
+        createPhoneForm.get('color')?.touched
+      "
+    >
+      Please Enter a valid color!
+    </div>
+    <div class="form-control">
+      <label class="form-label"> Screen size: </label>
+      <input formControlName="screensize" class="form-input" type="number" placeholder="inch"/>
+    </div>
+    <div
+      class="helper-message"
+      *ngIf="
+        !createPhoneForm.get('screensize')?.valid &&
+        createPhoneForm.get('screensize')?.touched
+      "
+    >
+      Please Enter a valid Screen Size!
+    </div>
+    <div class="form-control">
+      <label class="form-label"> Description: </label>
+      <textarea
+      formControlName="sku"
+      class="form-input"
+      rows="3"
+      style="resize: none"
+    ></textarea>
+
+    </div>
+    <div
+      class="helper-message"
+      *ngIf="
+        !createPhoneForm.get('description')?.valid &&
+        createPhoneForm.get('description')?.touched
+      "
+    >
+      Please Enter a valid Description!
+    </div>
+    <div class="form-control">
+      <label class="form-label"> SKU: </label>
+      <input formControlName="sku" class="form-input" />
+    </div>
+    <div
+      class="helper-message"
+      *ngIf="
+        !createPhoneForm.get('sku')?.valid &&
+        createPhoneForm.get('sku')?.touched
+      "
+    >
+      Please Enter a valid sku!
+    </div>
+    <button
+      class="create-phone-button"
+      type="submit"
+      [disabled]="createPhoneForm.invalid"
+    >
+      Create Iphone
+    </button>
+  </form>
+</div>
