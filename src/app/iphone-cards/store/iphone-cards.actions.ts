@@ -41,3 +41,19 @@ export const deleteIphoneSuccess = createAction(
     id: string;
   }>()
 );
+
+//Updating
+
+export const updateIphone = createAction(
+  '[Iphone] Update Iphone',
+  props<{
+    iphone: Iphone;
+  }>()
+);
+
+export const updateIphoneSuccess = createAction(
+  '[Iphone] Update Iphone Success',
+  props<{
+    iphone: Iphone;
+  }>()
+);

@@ -67,5 +67,37 @@ export class EditIphoneComponent implements OnInit {
     });
   }
 
-  onSubmit() {}
+  onSubmit() {
+    if (!this.editPhoneForm.valid) {
+      return;
+    }
+
+    const name = this.editPhoneForm.value.name
+    const model = this.editPhoneForm.value.model
+    const price = this.editPhoneForm.value.price
+    const  mainImage = this.editPhoneForm.value.mainImage
+    const color = this.editPhoneForm.value.color
+    const screenSize = this.editPhoneForm.value.screenSize
+    const description = this.editPhoneForm.value.description
+    const sku = this.editPhoneForm.value.sku
+
+    const iphone : Iphone = {
+      id : this.selectedId, 
+      name,
+      price,
+      mainImage,
+      color,
+      screenSize,
+      description,
+      sku,
+      model
+    }
+
+
+
+
+    this.store.dispatch(IphoneCardsAction.updateIphone({iphone}))
+
+    // buraya navigasyon ekle
+  }
 }

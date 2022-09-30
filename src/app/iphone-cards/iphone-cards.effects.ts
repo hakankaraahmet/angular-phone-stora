@@ -9,6 +9,8 @@ import {
   deleteIphoneSuccess,
   loadIphone,
   loadIphoneSuccess,
+  updateIphone,
+  updateIphoneSuccess,
 } from './store/iphone-cards.actions';
 
 @Injectable()
@@ -53,6 +55,19 @@ export class IphoneCardsEffects {
         return this.iphoneCardsService.deleteIphone(action.id).pipe(
           map((data) => {
             return deleteIphoneSuccess({ id: action.id });
+          })
+        );
+      })
+    );
+  });
+
+  updateIphones$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(updateIphone),
+      switchMap((action) => {
+        return this.iphoneCardsService.updateIphone(action.iphone).pipe(
+          map((data) => {
+            return updateIphoneSuccess({ iphone: action.iphone });
           })
         );
       })

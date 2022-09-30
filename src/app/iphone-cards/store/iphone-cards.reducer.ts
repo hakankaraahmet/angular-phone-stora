@@ -33,7 +33,17 @@ const _iphoneReducer = createReducer(
       ...state,
       iphoneList: updatedIphoneList,
     };
-  })
+  }),
+
+  on(IphoneCardsActions.updateIphoneSuccess, (state, action) => {
+    const updatedIphone = state.iphoneList.map((iphone) => {
+      return action.iphone.id === iphone.id ? action.iphone : iphone
+    });
+    return {
+      ...state,
+      iphoneList:  updatedIphone
+    };
+  }),
 );
 
 export function IphoneCardsReducer(state: State | any, action: Action) {
