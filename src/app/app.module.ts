@@ -16,6 +16,7 @@ import { IphoneCardsEffects } from './iphone-cards/iphone-cards.effects';
 import { EditIphoneComponent } from './iphone-cards/edit-iphone/edit-iphone.component';
 import { EditAccessoriesComponent } from './accessories-cards/edit-accessories/edit-accessories.component';
 import { CreateAccessoriesComponent } from './accessories-cards/create-accessories/create-accessories.component';
+import { AccessoriesCardsEffects } from './accessories-cards/accessories-cards.effects';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,7 @@ import { CreateAccessoriesComponent } from './accessories-cards/create-accessori
     HttpClientModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    EffectsModule.forFeature([IphoneCardsEffects]),
+    EffectsModule.forFeature([IphoneCardsEffects,AccessoriesCardsEffects]),
     EffectsModule.forRoot([]),
     StoreModule.forRoot(fromApp.appReducer)
   ],

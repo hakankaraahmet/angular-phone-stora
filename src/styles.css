@@ -91,6 +91,72 @@ body {
   transform: scale(1.2);
 }
 
+/* Forms */
+
+.form-container {
+  width: 30%;
+  margin: auto;
+}
+
+.form-control {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.form-label {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  width: 40%;
+  font-weight: bold;
+  color: rgb(82, 72, 72);
+}
+
+.form-input {
+  margin: 8px 0px;
+  width: 50%;
+  padding: 8px;
+  border: none;
+  border-radius: 8px;
+  background-color: lightgrey;
+}
+
+.file-input {
+    background-color: lightgrey;
+    color: rgb(82, 72, 72);
+    width:50%;
+    padding:8px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.form-input::-webkit-outer-spin-button,
+.form-input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0; 
+}
+
+.form-input:focus {
+  outline: none;
+}
+
+.create-button {
+  background-color: rgb(58, 111, 60);
+  border-radius: 8px;
+  padding: 8px;
+  color: rgb(180, 172, 172);
+  border: none;
+  display: flex;
+  margin: 32px auto;
+  cursor:pointer;
+}
+
+.helper-message {
+  color: rgb(194, 88, 88);
+  font-size: 12px;
+  text-align: right;
+}
 
 
 

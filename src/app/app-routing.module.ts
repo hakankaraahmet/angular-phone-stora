@@ -14,7 +14,7 @@ const routes: Routes = [
   { path: 'iphone-cards', component: IphoneCardsComponent },
   { path: 'accessories-cards', component: AccessoriesCardsComponent },
   { path: 'create-accessories', component: CreateAccessoriesComponent },
-  { path: 'edit-accessories', component: EditAccessoriesComponent },
+  { path: 'edit-accessories/:id', component: EditAccessoriesComponent },
   { path: 'create-iphone', component: CreateIphoneComponent },
   { path: 'edit-iphone/:id', component: EditIphoneComponent },
 ];

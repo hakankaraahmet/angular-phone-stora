@@ -49,9 +49,6 @@ export class EditIphoneComponent implements OnInit {
         });
       }
     });
-    console.log('this.selectedId', this.selectedId)
-    console.log('this.selectedIphone',this.selectedIphone);
-    console.log('this.iphoneList', this.iphoneList)
   }
 
   createForm() {

@@ -1,1 +1,57 @@
-<p>create-accessories works!</p>
+<div class="form-container">
+    <form [formGroup]="createAccessoriesForm" (ngSubmit)="onSubmit()">
+      <div class="form-control">
+        <label class="form-label"> Accessory Name: </label>
+  
+        <input formControlName="name" class="form-input" />
+      </div>
+      <div
+        class="helper-message"
+        *ngIf="
+          !createAccessoriesForm.get('name')?.valid &&
+          createAccessoriesForm.get('name')?.touched
+        "
+      >
+        Please Enter a valid accessory name!
+      </div>
+      <div class="form-control">
+        <label class="form-label"> Price: </label>
+        <input
+          formControlName="price"
+          class="form-input"
+          type="number"
+          placeholder="TL"
+        />
+      </div>
+      <div
+        class="helper-message"
+        *ngIf="
+          !createAccessoriesForm.get('price')?.valid &&
+          createAccessoriesForm.get('price')?.touched
+        "
+      >
+        Please Enter a valid Price!
+      </div>
+      <div class="form-control">
+        <label class="form-label"> SKU: </label>
+        <input formControlName="sku" class="form-input" />
+      </div>
+      <div
+        class="helper-message"
+        *ngIf="
+          !createAccessoriesForm.get('sku')?.valid &&
+          createAccessoriesForm.get('sku')?.touched
+        "
+      >
+        Please Enter a valid sku!
+      </div>
+      <button
+        class="create-button"
+        type="submit"
+        [disabled]="createAccessoriesForm.invalid"
+      >
+        Create Accessory
+      </button>
+    </form>
+  </div>
+  
