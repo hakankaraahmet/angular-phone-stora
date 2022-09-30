@@ -3,10 +3,7 @@ import { Iphone } from '../iphone.model';
 
 
 export const loadIphone = createAction(
-  '[Iphone] Load Iphone',
-  // props<{
-
-  // }>()
+  '[Iphone] Load Iphone'
 )
 
 export const loadIphoneSuccess = createAction(

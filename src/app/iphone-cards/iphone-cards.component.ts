@@ -21,12 +21,11 @@ export class IphoneCardsComponent implements OnInit {
     private http: HttpClient
   ) {}
 
-
-
   ngOnInit(): void {
-    // this.fetchPhoneList();
-    this.store.select('iphone').subscribe((s) => console.log(s.iphoneList));
-    this.store.dispatch(IphoneCardsAction.loadIphone())
+    this.store.dispatch(IphoneCardsAction.loadIphone());
+    this.store
+      .select('iphone')
+      .subscribe((s) => (this.iphoneList = s.iphoneList));
   }
 
   onRouteCreate() {
