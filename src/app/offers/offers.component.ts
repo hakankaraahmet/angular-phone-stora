@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
 import { Offers } from './offers.model';
+import * as fromApp from '../store/app.reducer';
 
 @Component({
   selector: 'app-offers',
@@ -8,9 +10,10 @@ import { Offers } from './offers.model';
 })
 export class OffersComponent implements OnInit {
   offers: Offers[] = [];
-  constructor() { }
+  constructor(    private store: Store<fromApp.AppState>,) { }
 
   ngOnInit(): void {
+   this.store.select('iphone').subscribe((s) => console.log(s.iphoneList))
   }
 
 }

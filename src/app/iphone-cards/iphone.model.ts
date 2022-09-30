@@ -7,7 +7,7 @@ export class Iphone {
   public description: string;
   public sku: string;
   public model: string;
-  public id: number;
+  public id:string;
 
   constructor(
     name: string,
@@ -18,7 +18,7 @@ export class Iphone {
     description: string,
     sku: string,
     model: string,
-    id: number
+    id: string
   ) {
     this.name = name;
     this.price = price;

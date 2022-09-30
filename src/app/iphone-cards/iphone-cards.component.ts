@@ -13,7 +13,7 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./iphone-cards.component.css'],
 })
 export class IphoneCardsComponent implements OnInit {
-  iphoneList: Observable<{ ingredients: Iphone[] }> | any;
+  iphoneList: Observable<{ iphoneList: Iphone[] }> | any;
 
   constructor(
     private store: Store<fromApp.AppState>,
@@ -21,28 +21,12 @@ export class IphoneCardsComponent implements OnInit {
     private http: HttpClient
   ) {}
 
-  private fetchPhoneList() {
-    this.http
-      .get('https://iphone-list-53d00-default-rtdb.firebaseio.com/posts.json')
-      .pipe(
-        map((responseData : any) => {
-          const arr= []
-          for (const key in responseData) {
-            if (responseData.hasOwnProperty(key)) {
-              arr.push({ ...responseData[key] , id: key });
-            }
-          }
-          this.iphoneList = arr;
-        })
-      )
-      .subscribe((data) => console.log(data));
-  }
+
 
   ngOnInit(): void {
-    // this.iphoneList = this.store.select('iphone');
-    // this.store.subscribe((s) => (this.iphoneList = s.iphone.iphoneList));
-    console.log(this.iphoneList)
-    this.fetchPhoneList();
+    // this.fetchPhoneList();
+    this.store.select('iphone').subscribe((s) => console.log(s.iphoneList));
+    this.store.dispatch(IphoneCardsAction.loadIphone())
   }
 
   onRouteCreate() {

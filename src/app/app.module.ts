@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -11,6 +12,7 @@ import * as fromApp from './store/app.reducer';
 import { CreateIphoneComponent } from './iphone-cards/create-iphone/create-iphone.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule} from "@angular/common/http"
+import { IphoneCardsEffects } from './iphone-cards/iphone-cards.effects';
 
 @NgModule({
   declarations: [
@@ -25,6 +27,8 @@ import { HttpClientModule} from "@angular/common/http"
     HttpClientModule,
     AppRoutingModule,
     ReactiveFormsModule,
+    EffectsModule.forFeature([IphoneCardsEffects]),
+    EffectsModule.forRoot([]),
     StoreModule.forRoot(fromApp.appReducer)
   ],
   providers: [],
