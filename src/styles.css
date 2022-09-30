@@ -8,3 +8,89 @@ body {
   font-family: "Noto Sans Mono", monospace;
   background-color: rgba(83, 67, 97, 0.5);
 }
+
+
+.page-container {
+  position: relative;
+}
+.cards-container {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  gap: 5rem;
+  width: 75%;
+  margin: auto;
+}
+
+.card-container {
+  background-color: rgba(69, 62, 59, 0.5);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 8px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.card-image {
+  margin: 16px;
+  width: 300px;
+  height: 300px;
+  object-fit: cover;
+}
+
+.card-info {
+  width: 90%;
+  margin: 16px;
+  font-weight: bold;
+}
+.card-header {
+  font-size: 32px;
+  margin: 8px;
+}
+
+.card-feature {
+  font-size: 22px;
+  margin: 8px;
+  color: rgb(63, 59, 59);
+}
+
+.card-button-container {
+  display: flex;
+  justify-content: flex-end;
+  width: 300px;
+  margin: 16px;
+}
+
+.card-button {
+  border: none;
+  cursor: pointer;
+  border-radius: 8px;
+  color: #fff;
+  padding: 8px;
+}
+
+.card-button:hover {
+  transform: scale(1.2);
+}
+
+.add-card-button {
+  background-color: rgba(69, 62, 59, 0.5);
+  font-size: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  position: fixed;
+  right: 3vw;
+  bottom: 10vh;
+  color: #fff;
+  cursor: pointer;
+}
+.add-card-button:hover {
+  transform: scale(1.2);
+}
+
+
+
+

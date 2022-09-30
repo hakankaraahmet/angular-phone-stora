@@ -14,6 +14,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule} from "@angular/common/http"
 import { IphoneCardsEffects } from './iphone-cards/iphone-cards.effects';
 import { EditIphoneComponent } from './iphone-cards/edit-iphone/edit-iphone.component';
+import { EditAccessoriesComponent } from './accessories-cards/edit-accessories/edit-accessories.component';
+import { CreateAccessoriesComponent } from './accessories-cards/create-accessories/create-accessories.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +25,8 @@ import { EditIphoneComponent } from './iphone-cards/edit-iphone/edit-iphone.comp
     OffersComponent,
     CreateIphoneComponent,
     EditIphoneComponent,
+    EditAccessoriesComponent,
+    CreateAccessoriesComponent,
   ],
   imports: [
     BrowserModule,

@@ -13,4 +13,12 @@ export class AccessoriesCardsComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  onRouteCreate() {
+
+  }
+
+  onDelete() {
+
+  }
+
 }

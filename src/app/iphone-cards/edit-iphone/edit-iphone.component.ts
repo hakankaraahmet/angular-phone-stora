@@ -97,7 +97,6 @@ export class EditIphoneComponent implements OnInit {
 
 
     this.store.dispatch(IphoneCardsAction.updateIphone({iphone}))
-
-    // buraya navigasyon ekle
+    this.router.navigate(['/iphone-cards']);
   }
 }

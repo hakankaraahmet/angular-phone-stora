@@ -1,1 +1,35 @@
-<p>accessories-cards works!</p>
+<div class="page-container">
+  <div class="cards-container">
+    <div *ngFor="let accessories of accessoriesList">
+      <div class="card-container">
+        <div class="card-info">
+          <div class="card-header">{{ accessories.name }}</div>
+          <div class="card-feature">{{ accessories.price }} tl</div>
+          <div class="card-feature">
+            {{ accessories.sku }}
+          </div>
+        </div>
+        <div class="card-button-container">
+          <a
+            class="card-button"
+            style="
+              background-color: rgb(22, 22, 69);
+              margin-right: 16px;
+              text-decoration: none;
+            "
+            [routerLink]="['/edit-accessories', accessories.id]"
+          >
+            Update</a
+          ><button
+            (click)="onDelete()"
+            class="card-button"
+            style="background-color: rgb(176, 56, 56)"
+          >
+            Delete
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="add-card-button" (click)="onRouteCreate()">Add</div>
+</div>
