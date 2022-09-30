@@ -21,4 +21,10 @@ export class IphoneCardsService {
         })
     )
   }
+
+  addIphone(iphone:Iphone): Observable<{name : string}>{
+    return this.http.post<{name:string}>(
+        'https://iphone-list-53d00-default-rtdb.firebaseio.com/posts.json',iphone
+    )
+  }
 }

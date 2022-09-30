@@ -35,7 +35,7 @@ export class CreateIphoneComponent implements OnInit {
 
   onSubmit() {
 
-
+    this.store.dispatch(IphoneCardsAction.addIphone({iphone : this.createPhoneForm.value}))
     this.createPhoneForm.reset();
     this.router.navigate(['/iphone-cards']);
   }

@@ -17,10 +17,13 @@ const _iphoneReducer = createReducer(
     iphoneList: action.iphones,
   })),
 
-  on(IphoneCardsActions.addIphone, (state, action) => ({
-    ...state,
-    iphoneList: state.iphoneList.concat({ ...action.iphone }),
-  })),
+  on(IphoneCardsActions.addIphoneSuccess, (state, action) => {
+    let iphone = { ...action.iphone };
+    return {
+      ...state,
+      iphoneList: [...state.iphoneList, iphone],
+    };
+  }),
 
   on(IphoneCardsActions.deleteIphone, (state, action) => ({
     ...state,

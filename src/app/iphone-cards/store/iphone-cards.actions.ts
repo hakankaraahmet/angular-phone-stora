@@ -1,30 +1,34 @@
 import { createAction, props } from '@ngrx/store';
 import { Iphone } from '../iphone.model';
 
-
-export const loadIphone = createAction(
-  '[Iphone] Load Iphone'
-)
+//Loading 
+export const loadIphone = createAction('[Iphone] Load Iphone');
 
 export const loadIphoneSuccess = createAction(
   '[Iphone] Load Iphone Success',
   props<{
-    iphones : Iphone[]
+    iphones: Iphone[];
   }>()
-)
+);
 
+//Adding
 export const addIphone = createAction(
   '[Iphone] Add Iphone',
   props<{
-    iphone: Iphone
+    iphone: Iphone;
+  }>()
+);
+
+export const addIphoneSuccess = createAction(
+  '[Iphone] Add Iphone Success',
+  props<{
+    iphone: Iphone;
   }>()
 );
 
 export const deleteIphone = createAction(
   '[Iphone] Delete Iphone',
   props<{
-    index: number
+    index: number;
   }>()
 );
-
-
