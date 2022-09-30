@@ -18,11 +18,16 @@
           </div>
         </div>
         <div class="card-button-container">
-          <button
+          <a
             class="card-button"
-            style="background-color: rgb(22, 22, 69); margin-right: 16px"
+            style="
+              background-color: rgb(22, 22, 69);
+              margin-right: 16px;
+              text-decoration: none;
+            "
+            [routerLink]="['/edit-iphone', iphone.id]"
           >
-            Update</button
+            Update</a
           ><button
             (click)="onDelete(iphone.id)"
             class="card-button"
