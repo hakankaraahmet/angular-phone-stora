@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
-import { Iphone } from '../iphone.model';
+import { Iphone } from './iphone.model';
 
 @Injectable({
   providedIn: 'root',
@@ -25,6 +25,12 @@ export class IphoneCardsService {
   addIphone(iphone:Iphone): Observable<{name : string}>{
     return this.http.post<{name:string}>(
         'https://iphone-list-53d00-default-rtdb.firebaseio.com/posts.json',iphone
+    )
+  }
+
+  deleteIphone(id:string){
+    return this.http.delete<{name:string}>(
+        `https://iphone-list-53d00-default-rtdb.firebaseio.com/posts/${id}.json`
     )
   }
 }

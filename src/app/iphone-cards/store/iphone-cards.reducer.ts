@@ -25,10 +25,15 @@ const _iphoneReducer = createReducer(
     };
   }),
 
-  on(IphoneCardsActions.deleteIphone, (state, action) => ({
-    ...state,
-    iphoneList: state.iphoneList.filter((_, index) => index !== action.index),
-  }))
+  on(IphoneCardsActions.deleteIphoneSuccess, (state, action) => {
+    const updatedIphoneList = state.iphoneList.filter((iphone) => {
+      return iphone.id !== action.id;
+    });
+    return {
+      ...state,
+      iphoneList: updatedIphoneList,
+    };
+  })
 );
 
 export function IphoneCardsReducer(state: State | any, action: Action) {

@@ -32,5 +32,9 @@ export class IphoneCardsComponent implements OnInit {
     this.router.navigate(['/create-iphone']);
   }
 
-  onDelete(id: number) {}
+  onDelete(id: string) {
+    if(confirm('Are you sure you want to delete ?')){
+      this.store.dispatch(IphoneCardsAction.deleteIphone({id}))
+    }
+  }
 }

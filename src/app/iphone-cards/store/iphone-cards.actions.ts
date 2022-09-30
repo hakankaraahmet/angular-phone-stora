@@ -26,9 +26,18 @@ export const addIphoneSuccess = createAction(
   }>()
 );
 
+//Deleting
+
 export const deleteIphone = createAction(
   '[Iphone] Delete Iphone',
   props<{
-    index: number;
+    id: string;
+  }>()
+);
+
+export const deleteIphoneSuccess = createAction(
+  '[Iphone] Delete Iphone Success',
+  props<{
+    id: string;
   }>()
 );
