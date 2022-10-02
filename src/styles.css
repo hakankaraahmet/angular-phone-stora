@@ -6,7 +6,8 @@ body {
   padding: 0;
   box-sizing: border-box;
   font-family: "Noto Sans Mono", monospace;
-  background-color: rgba(83, 67, 97, 0.5);
+  background-color: #3b3737;
+  overflow-x: hidden;
 }
 
 
@@ -16,13 +17,13 @@ body {
 .cards-container {
   display: grid;
   grid-template-columns: auto auto auto;
-  gap: 5rem;
-  width: 75%;
+  gap: 3rem;
+  width: 90%;
   margin: auto;
 }
 
 .card-container {
-  background-color: rgba(69, 62, 59, 0.5);
+  border:3px solid #e3bc5f;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -44,13 +45,14 @@ body {
 }
 .card-header {
   font-size: 32px;
+  color: #F1AF12;
   margin: 8px;
 }
 
 .card-feature {
   font-size: 22px;
   margin: 8px;
-  color: rgb(63, 59, 59);
+  color: #F1AF12;
 }
 
 .card-button-container {
@@ -72,18 +74,23 @@ body {
   transform: scale(1.2);
 }
 
+.add-card-container {
+  width: 90%;
+  display:flex;
+  justify-content: flex-end;
+  margin: 2rem auto ;
+}
+
 .add-card-button {
-  background-color: rgba(69, 62, 59, 0.5);
+  background-color: rgba(72, 96, 66, 0.5);
   font-size: 32px;
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100px;
-  height: 100px;
+  width: 50px;
+  height: 50px;
+  border:none;
   border-radius: 50%;
-  position: fixed;
-  right: 3vw;
-  bottom: 10vh;
   color: #fff;
   cursor: pointer;
 }
@@ -158,5 +165,19 @@ body {
   text-align: right;
 }
 
+
+@media(max-width : 1200px){
+  .cards-container {
+    grid-template-columns: auto auto;
+    gap: 2rem;
+
+  }
+}
+
+@media(max-width : 768px){
+  .cards-container {
+    grid-template-columns: auto;
+  }
+}
 
 
