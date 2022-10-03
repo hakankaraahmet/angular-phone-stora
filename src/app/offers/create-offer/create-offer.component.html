@@ -1,18 +1,25 @@
 <div class="form-container">
-  <!-- <form [formGroup]="createOffersForm" (ngSubmit)="onSubmit()"> -->
     <mat-form-field appearance="fill" >
       <mat-label>Iphones</mat-label>
-      <mat-select [formControl]="createOffersForm" multiple >
+      <mat-select [formControl]="iphoneOffersForm" multiple (selectionChange)="selectionChanged()">
         <mat-option *ngFor="let iphone of iphoneList" [value]="iphone">{{iphone.name}}</mat-option>
       </mat-select>
     </mat-form-field>
-
+        <mat-form-field appearance="fill" >
+      <mat-label>Accessories</mat-label>
+      <mat-select [formControl]="accessoriesOffersForm" multiple (selectionChange)="selectionChanged()">
+        <mat-option *ngFor="let accessory of accessoriesList" [value]="accessory">{{accessory.name}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="fill" >
+      <mat-label>Name</mat-label>
+      <input matInput  type="text" [formControl]="offersNameForm" />
+      </mat-form-field>
     <button
       class="create-button"
-      type="submit"
-      [disabled]="createOffersForm.invalid"
+      (click)="createOffer()"
     >
       Create Offer
     </button>
-  <!-- </form> -->
+
 </div>

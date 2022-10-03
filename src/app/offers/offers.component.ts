@@ -16,6 +16,9 @@ export class OffersComponent implements OnInit {
 
   ngOnInit(): void {
     this.store.dispatch(OffersAction.loadOffer());
+    this.store
+    .select('offers')
+    .subscribe((s) => (this.offersList = s.offersList));
     this.store.select('offers').subscribe((s) => console.log(s.offersList));
   }
 

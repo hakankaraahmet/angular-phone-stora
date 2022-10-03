@@ -1,1 +1,25 @@
-<p>edit-offer works!</p>
+<div class="form-container">
+    <form [formGroup]="editNameForm" (ngSubmit)="onSubmit()">
+        <div class="form-control">
+            <label class="form-label"> Offer Name: </label>
+      
+            <input formControlName="name" class="form-input" />
+          </div>
+          <div
+            class="helper-message"
+            *ngIf="
+              !editNameForm.get('name')?.valid &&
+              editNameForm.get('name')?.touched
+            "
+          >
+            Please Enter a valid offer name!
+          </div>
+        <button
+          class="create-button"
+          type="submit" [disabled]="editNameForm.invalid"
+        >
+          Edit Offer
+        </button>
+    </form>
+
+</div>
