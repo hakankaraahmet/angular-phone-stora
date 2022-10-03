@@ -1,11 +1,14 @@
-export class Offers {
-  public name: string;
-  public price: number;
-  public id: number;
+import { Accessories } from "../accessories-cards/accessories.model";
+import { Iphone } from "../iphone-cards/iphone.model";
 
-  constructor(name: string, price: number, id: number) {
-    this.name = name;
-    this.price = price;
+export class Offer {
+  public offeredDevice: Iphone | Accessories;
+  public name : string;
+  public id: string;
+
+  constructor(offeredDevice: Iphone | Accessories, id: string, name : string) {
+    this.offeredDevice = offeredDevice;
     this.id = id;
+    this.name = name;
   }
 }

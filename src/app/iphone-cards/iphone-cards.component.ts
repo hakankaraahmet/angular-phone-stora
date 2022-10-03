@@ -6,7 +6,6 @@ import * as fromApp from '../store/app.reducer';
 import { Router } from '@angular/router';
 import * as IphoneCardsAction from './store/iphone-cards.actions';
 
-
 @Component({
   selector: 'app-iphone-cards',
   templateUrl: './iphone-cards.component.html',
@@ -15,17 +14,13 @@ import * as IphoneCardsAction from './store/iphone-cards.actions';
 export class IphoneCardsComponent implements OnInit {
   iphoneList: Observable<{ iphoneList: Iphone[] }> | any;
 
-  constructor(
-    private store: Store<fromApp.AppState>,
-    private router: Router,
-
-  ) {}
+  constructor(private store: Store<fromApp.AppState>, private router: Router) {}
 
   ngOnInit(): void {
-    this.store.dispatch(IphoneCardsAction.loadIphone());
     this.store
       .select('iphone')
       .subscribe((s) => (this.iphoneList = s.iphoneList));
+    this.store.dispatch(IphoneCardsAction.loadIphone());
   }
 
   onRouteCreate() {
@@ -33,10 +28,8 @@ export class IphoneCardsComponent implements OnInit {
   }
 
   onDelete(id: string) {
-    if(confirm('Are you sure you want to delete ?')){
-      this.store.dispatch(IphoneCardsAction.deleteIphone({id}))
+    if (confirm('Are you sure you want to delete ?')) {
+      this.store.dispatch(IphoneCardsAction.deleteIphone({ id }));
     }
   }
-
-
 }

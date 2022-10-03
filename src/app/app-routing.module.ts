@@ -6,11 +6,15 @@ import { EditAccessoriesComponent } from './accessories-cards/edit-accessories/e
 import { CreateIphoneComponent } from './iphone-cards/create-iphone/create-iphone.component';
 import { EditIphoneComponent } from './iphone-cards/edit-iphone/edit-iphone.component';
 import { IphoneCardsComponent } from './iphone-cards/iphone-cards.component';
+import { CreateOfferComponent } from './offers/create-offer/create-offer.component';
+import { EditOfferComponent } from './offers/edit-offer/edit-offer.component';
 import { OffersComponent } from './offers/offers.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/offers', pathMatch: 'full' },
   { path: 'offers', component: OffersComponent },
+  { path: 'create-offer', component: CreateOfferComponent },
+  { path: 'edit-offer/:id', component: EditOfferComponent },
   { path: 'iphone-cards', component: IphoneCardsComponent },
   { path: 'accessories-cards', component: AccessoriesCardsComponent },
   { path: 'create-accessories', component: CreateAccessoriesComponent },
