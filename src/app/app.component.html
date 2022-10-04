@@ -17,7 +17,7 @@
   </div>
 </div>
 
-<div *ngIf="isSignedIn">
+<div *ngIf="isSignedIn" (isLogout)="handleLogout()">
   <header>
     <div>
       <img

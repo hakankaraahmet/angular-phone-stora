@@ -2,7 +2,6 @@ import { Component, OnInit,DoCheck, EventEmitter, Output } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 
 import { Router } from '@angular/router';
-import { BehaviorSubject } from 'rxjs';
 import { FirebaseService } from './services/firebase.service';
 
 @Component({
@@ -12,8 +11,8 @@ import { FirebaseService } from './services/firebase.service';
 })
 export class AppComponent implements OnInit, DoCheck {
   title = 'myApp';
-  loggedIn = new BehaviorSubject<boolean>(false);
   isSignedIn = false;
+  isLoggedIn = false;
   constructor(
     public router: Router,
     public firebaseService: FirebaseService,
@@ -29,7 +28,7 @@ export class AppComponent implements OnInit, DoCheck {
   }
   
   ngDoCheck(): void {
-    console.log("isloggedin", this.isSignedIn)
+    console.log("isloggedin", this.firebaseService.isLoggedIn)
 
   }
 
@@ -47,10 +46,10 @@ export class AppComponent implements OnInit, DoCheck {
     this.isSignedIn = false;
   }
   
-  logOut() {
-    return this.afAuth.signOut().then(() => {
-      window.alert('Logged out!');
-      this.isSignedIn = false;
-    });
+  async logOut() {
+    if (confirm('Are you sure you log out ?')){
+      await this.firebaseService.logout();
+       this.isSignedIn = false;
+    }
   }
 }
