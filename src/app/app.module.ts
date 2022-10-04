@@ -27,6 +27,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatInputModule } from '@angular/material/input';
 import { FirebaseService } from './services/firebase.service';
 import { AuthComponent } from './auth/auth.component';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { HomeComponent } from './home/home.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -40,6 +42,7 @@ import { AuthComponent } from './auth/auth.component';
     CreateOfferComponent,
     EditOfferComponent,
     AuthComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,
@@ -68,7 +71,7 @@ import { AuthComponent } from './auth/auth.component';
     NgbModule,
     BrowserAnimationsModule,
   ],
-  providers: [FirebaseService],
+  providers: [FirebaseService,AngularFireAuth],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
