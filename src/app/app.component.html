@@ -17,7 +17,7 @@
     <button (click)="onSignIn(email.value, password.value)">Sign in</button>
   </div>
 
-  <div *ngIf="isSignedIn" (isLogout)="handleLogout()">
+  <div *ngIf="isSignedIn" >
     <header>
       <div>
         <img
