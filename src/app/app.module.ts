@@ -26,9 +26,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatInputModule } from '@angular/material/input';
 import { FirebaseService } from './services/firebase.service';
-import { AuthComponent } from './auth/auth.component';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
-import { HomeComponent } from './home/home.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,8 +39,6 @@ import { HomeComponent } from './home/home.component';
     CreateAccessoriesComponent,
     CreateOfferComponent,
     EditOfferComponent,
-    AuthComponent,
-    HomeComponent,
   ],
   imports: [
     BrowserModule,

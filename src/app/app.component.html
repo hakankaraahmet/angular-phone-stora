@@ -1,5 +1,6 @@
-<div>
-  <div *ngIf="!isSignedIn">
+<div *ngIf="!isSignedIn">
+
+  <div >
     <h2>Sign up</h2>
     <input type="text" #emailSignup />
     <input type="text" #passwordSignup />
@@ -7,53 +8,51 @@
       Sign up
     </button>
   </div>
-
   <hr />
-
-  <div *ngIf="!isSignedIn">
+  <div>
     <h2>Sign in</h2>
     <input type="text" #email />
     <input type="text" #password />
     <button (click)="onSignIn(email.value, password.value)">Sign in</button>
   </div>
+</div>
 
-  <div *ngIf="isSignedIn" >
-    <header>
-      <div>
-        <img
-          class="logo"
-          src="https://images.ctfassets.net/5276wquttznv/75urGEiHlIo7gOjfUM0kQj/194a449cde99cb2465d201c7ab92d53d/qimia-header-logo.png?w=200&q=100"
-          alt="logo"
-        />
+<div *ngIf="isSignedIn">
+  <header>
+    <div>
+      <img
+        class="logo"
+        src="https://images.ctfassets.net/5276wquttznv/75urGEiHlIo7gOjfUM0kQj/194a449cde99cb2465d201c7ab92d53d/qimia-header-logo.png?w=200&q=100"
+        alt="logo"
+      />
+    </div>
+    <nav>
+      <div
+        class="page-route"
+        routerLinkActive="active"
+        routerLink="/offers"
+        [routerLinkActiveOptions]="{ exact: true }"
+      >
+        Offers
       </div>
-      <nav>
-        <div
-          class="page-route"
-          routerLinkActive="active"
-          routerLink="/offers"
-          [routerLinkActiveOptions]="{ exact: true }"
-        >
-          Offers
-        </div>
-        <div
-          class="page-route"
-          routerLinkActive="active"
-          routerLink="/iphone-cards"
-        >
-          Iphone
-        </div>
-        <div
-          class="page-route"
-          routerLinkActive="active"
-          routerLink="/accessories-cards"
-        >
-          Accessories
-        </div>
-        <button (click)="logOut()">Logout</button>
-      </nav>
-    </header>
-    <main>
-      <router-outlet></router-outlet>
-    </main>
-  </div>
+      <div
+        class="page-route"
+        routerLinkActive="active"
+        routerLink="/iphone-cards"
+      >
+        Iphone
+      </div>
+      <div
+        class="page-route"
+        routerLinkActive="active"
+        routerLink="/accessories-cards"
+      >
+        Accessories
+      </div>
+      <button (click)="logOut()">Logout</button>
+    </nav>
+  </header>
+  <main>
+    <router-outlet></router-outlet>
+  </main>
 </div>

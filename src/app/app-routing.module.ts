@@ -3,7 +3,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { AccessoriesCardsComponent } from './accessories-cards/accessories-cards.component';
 import { CreateAccessoriesComponent } from './accessories-cards/create-accessories/create-accessories.component';
 import { EditAccessoriesComponent } from './accessories-cards/edit-accessories/edit-accessories.component';
-import { HomeComponent } from './home/home.component';
 import { CreateIphoneComponent } from './iphone-cards/create-iphone/create-iphone.component';
 import { EditIphoneComponent } from './iphone-cards/edit-iphone/edit-iphone.component';
 import { IphoneCardsComponent } from './iphone-cards/iphone-cards.component';
@@ -12,7 +11,7 @@ import { EditOfferComponent } from './offers/edit-offer/edit-offer.component';
 import { OffersComponent } from './offers/offers.component';
 
 const routes: Routes = [
-  { path: ' ', component: HomeComponent },
+  { path: '', redirectTo: '/offers', pathMatch: 'full' },
   { path: 'offers', component: OffersComponent },
   { path: 'create-offer', component: CreateOfferComponent },
   { path: 'edit-offer/:id', component: EditOfferComponent },
