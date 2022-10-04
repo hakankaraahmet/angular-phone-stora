@@ -1,15 +1,14 @@
-import { Component, OnInit,EventEmitter,Output } from '@angular/core';
-import { FirebaseService } from './services/firebase.service';
+import { Component, OnInit } from '@angular/core';
+import { FirebaseService } from '../services/firebase.service';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  selector: 'app-auth',
+  templateUrl: './auth.component.html',
+  styleUrls: ['./auth.component.css']
 })
-export class AppComponent implements OnInit{
-  title = 'myApp';
+export class AuthComponent implements OnInit {
   isSignedIn = false;
-  constructor(public firebaseService : FirebaseService){}
+  constructor(public firebaseService: FirebaseService) { }
 
   ngOnInit(): void {
     if(localStorage.getItem('user') !== null)
@@ -32,9 +31,5 @@ export class AppComponent implements OnInit{
 
   handleLogout(){
     this.isSignedIn = false
-  }
-  
-  logOut(){
-    this.firebaseService.logout
   }
 }
