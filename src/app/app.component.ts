@@ -1,4 +1,4 @@
-import { Component, OnInit,DoCheck, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 
 import { Router } from '@angular/router';
@@ -9,7 +9,7 @@ import { FirebaseService } from './services/firebase.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
 })
-export class AppComponent implements OnInit, DoCheck {
+export class AppComponent implements OnInit {
   title = 'myApp';
   isSignedIn = false;
   isLoggedIn = false;
@@ -27,10 +27,6 @@ export class AppComponent implements OnInit, DoCheck {
     else this.isSignedIn = false;
   }
 
-  ngDoCheck(): void {
-    console.log("isloggedin", this.firebaseService)
-
-  }
 
   async onSignUp(email: string, password: string) {
     await this.firebaseService.signup(email, password);

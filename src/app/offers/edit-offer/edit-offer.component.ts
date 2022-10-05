@@ -17,10 +17,15 @@ import * as AccessoriesCardsAction from '../../accessories-cards/store/accessori
   styleUrls: ['./edit-offer.component.css'],
 })
 export class EditOfferComponent implements OnInit {
+  iphoneList: Observable<{ iphoneList: Iphone[] }> | any;
   editNameForm: FormGroup;
   selectedOffer: any;
   selectedId: string;
   offersList: Offer[];
+  iphoneOffersForm= new FormControl();
+  defaultIphoneList : Iphone[];
+  totalPrice: number;
+  productNames: string[];
 
   constructor(
     private store: Store<fromApp.AppState>,
@@ -29,8 +34,13 @@ export class EditOfferComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.store.dispatch(OfferActions.loadOffer());
     this.createForm();
+    this.store
+      .select('iphone')
+      .subscribe((s) => (this.iphoneList = s.iphoneList));
+    this.store.dispatch(IphoneCardsAction.loadIphone());
+
+
     this.store
       .select('offers')
       .subscribe((s) => (this.offersList = s.offersList));
@@ -46,16 +56,37 @@ export class EditOfferComponent implements OnInit {
         this.editNameForm.patchValue({
           name: this.selectedOffer?.name,
         });
+        this.iphoneOffersForm.patchValue({
+          offeredDevice : this.selectedOffer?.offeredDevice
+        })
       }
     });
-
-    console.log(this.selectedOffer)
+    this.defaultIphoneList = this.iphoneOffersForm.value.offeredDevice;
+   this.iphoneOffersForm.setValue(this.defaultIphoneList)
+   console.log('this.iphoneOffersForm.value', this.iphoneOffersForm.value)
   }
 
   createForm() {
     this.editNameForm = new FormGroup({
       name: new FormControl(null, Validators.required),
     });
+
+    this.iphoneOffersForm = new FormControl({
+      offeredDevice: new FormControl(null, Validators.required),
+    });
+  }
+
+  selectionChanged() {
+    this.productNames = [];
+    this.totalPrice = 0;
+    let iphones: Iphone[] = this.defaultIphoneList;
+
+    if (iphones)
+      iphones.forEach((element) => {
+        this.totalPrice += element.price;
+        this.productNames.push(element.name);
+      });
+    this.totalPrice = this.totalPrice * 0.8;
   }
 
   onSubmit() {
@@ -64,12 +95,14 @@ export class EditOfferComponent implements OnInit {
     }
 
     const name = this.editNameForm.value.name;
+    const offeredDevice = this.iphoneOffersForm.value
+    const price = this.iphoneOffersForm.value.price;
 
     const offer: Offer = {
       id: this.selectedId,
       name,
-      price: this.selectedOffer.price,
-      offeredDevice: this.selectedOffer.offeredDevice,
+      price: price,
+      offeredDevice: offeredDevice,
     };
 
     this.store.dispatch(OfferActions.updateOffer({ offer }));
