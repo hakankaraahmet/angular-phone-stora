@@ -13,22 +13,22 @@ export class AppComponent implements OnInit, DoCheck {
   title = 'myApp';
   isSignedIn = false;
   isLoggedIn = false;
+  isMember = false;
   constructor(
     public router: Router,
     public firebaseService: FirebaseService,
     public afAuth: AngularFireAuth
   ) {
-    
+
   }
 
   ngOnInit(): void {
     if (localStorage.getItem('user') !== null) this.isSignedIn = true;
     else this.isSignedIn = false;
-    
   }
-  
+
   ngDoCheck(): void {
-    console.log("isloggedin", this.firebaseService.isLoggedIn)
+    console.log("isloggedin", this.firebaseService)
 
   }
 
@@ -45,7 +45,12 @@ export class AppComponent implements OnInit, DoCheck {
   handleLogout() {
     this.isSignedIn = false;
   }
-  
+
+  handleMemberLogin(){
+    this.isMember = !this.isMember;
+  }
+
+
   async logOut() {
     if (confirm('Are you sure you log out ?')){
       await this.firebaseService.logout();

@@ -1,53 +1,112 @@
 header {
-    /* width:100%; */
-    display:flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: .5rem;
-    background-color: rgb(29, 27, 27);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem;
+  background-color: rgb(29, 27, 27);
 }
 
-nav{
-    display:flex;
-    justify-content: space-between;
-    /* margin-right:-8px; */
+nav {
+  display: flex;
+  justify-content: space-between;
 }
 
 .page-route {
-    color:#F1AF12;
-    border-radius: 8px;
-    margin: 0 8px;
-    padding:16px;
-    text-transform: uppercase;
-    cursor: pointer;
+  color: #f1af12;
+  border-radius: 8px;
+  margin: 0 8px;
+  padding: 16px;
+  text-transform: uppercase;
+  cursor: pointer;
 }
 
-.page-route:hover{
-    background-color: #F1AF12;
-    color:#000;
+.page-route:hover {
+  background-color: #f1af12;
+  color: #000;
 }
 
 .active {
-    border: 2px solid #F1AF12;
+  border: 2px solid #f1af12;
 }
 
-.logo{
-    width: 150px;
-    height:50px;
+.logo {
+  width: 150px;
+  height: 50px;
 }
-main{
-    margin: 5vh auto;
+main {
+  margin: 5vh auto;
 }
 
-@media (max-width:768px) {
-    nav {
-        flex-direction: column;
-    }
-    .page-route {
-        border-radius: 8px;
-        font-size:12px;
-        padding:8px;
-        margin: 8px 0 ;
 
-    }
+/* auth */
+
+.auth-container {
+  background-color: #000;
+  color: #f1af12;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.auth-content-container {
+  width: 25%;
+  display: flex;
+  flex-direction: column;
+}
+
+.auth-item {
+  margin-top: 16px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.auth-button {
+  background-color: #875f02;
+  color: #fff;
+  border-radius: 8px;
+  padding: 8px;
+  border: none;
+  margin-top: 16px;
+  cursor: pointer;
+  text-transform: uppercase;
+}
+
+.membership-button{
+  margin-top: 32px;
+  border-radius: 8px;
+  background-color: transparent;
+  border:2px solid #f1af12;
+  color: #fff;
+  padding: 8px;
+  cursor: pointer;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.membership-button:hover{
+  background-color: #f1af12;
+  color: #000;
+}
+
+@media(max-width:1024px){
+  .auth-content-container {
+    width: 50%;
+  }
+}
+
+@media (max-width: 768px) {
+  nav {
+    flex-direction: column;
+  }
+  .page-route {
+    border-radius: 8px;
+    font-size: 12px;
+    padding: 8px;
+    margin: 8px 0;
+  }
+  .auth-content-container {
+    width: 75%;
+  }
 }
