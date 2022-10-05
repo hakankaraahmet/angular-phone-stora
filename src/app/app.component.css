@@ -37,6 +37,13 @@ main {
   margin: 5vh auto;
 }
 
+.logout-button{
+  background-color: transparent;
+  border:2px solid #f1af12;
+  border-radius: 8px;
+  color: #f1af12;
+  cursor: pointer;
+}
 
 /* auth */
 
