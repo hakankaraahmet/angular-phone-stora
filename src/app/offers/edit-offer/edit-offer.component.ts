@@ -2,12 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs';
-import { Iphone } from 'src/app/iphone-cards/iphone.model';
 import * as fromApp from '../../store/app.reducer';
 import { Offer } from '../offers.model';
 import * as OfferActions from '../store/offers.actions';
-import * as IphoneCardsAction from '../../iphone-cards/store/iphone-cards.actions';
 
 @Component({
   selector: 'app-edit-offer',
@@ -15,7 +12,6 @@ import * as IphoneCardsAction from '../../iphone-cards/store/iphone-cards.action
   styleUrls: ['./edit-offer.component.css'],
 })
 export class EditOfferComponent implements OnInit {
-  iphoneList: Observable<{ iphoneList: Iphone[] }> | any;
   editNameForm: FormGroup;
   selectedOffer: any;
   selectedId: string;
@@ -28,12 +24,8 @@ export class EditOfferComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.store.dispatch(OfferActions.loadOffer())
     this.createForm();
-    this.store
-      .select('iphone')
-      .subscribe((s) => (this.iphoneList = s.iphoneList));
-    this.store.dispatch(IphoneCardsAction.loadIphone());
-
     this.store
       .select('offers')
       .subscribe((s) => (this.offersList = s.offersList));
@@ -68,9 +60,9 @@ export class EditOfferComponent implements OnInit {
 
     const offer: Offer = {
       id: this.selectedId,
-      name: name,
-      price: this.selectedOffer.price,
-      offeredDevice: this.selectedOffer.device,
+      name,
+      price: this.selectedOffer?.price,
+      offeredDevice: this.selectedOffer?.offeredDevice,
     };
 
     this.store.dispatch(OfferActions.updateOffer({ offer }));

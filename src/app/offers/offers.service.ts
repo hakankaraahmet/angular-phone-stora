@@ -12,7 +12,7 @@ export class OffersService {
     return this.http
       .get<Offer[]>(
         'https://offers-list-default-rtdb.firebaseio.com/posts.json'
-        
+
       )
       .pipe(
         map((data) => {
@@ -41,6 +41,8 @@ export class OffersService {
   updateOffer(offer: Offer) {
     const offerData = {
       [offer.id]: {
+        name:offer.name,
+        price:offer.price,
         offeredDevice: offer.offeredDevice
 
       },
