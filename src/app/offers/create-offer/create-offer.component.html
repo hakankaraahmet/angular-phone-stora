@@ -2,19 +2,22 @@
     <mat-form-field  appearance="fill">
       <mat-label>Iphones</mat-label>
       <mat-select [formControl]="iphoneOffersForm" multiple (selectionChange)="selectionChanged()">
-        <mat-option *ngFor="let iphone of iphoneList" [value]="iphone">{{iphone.name}}</mat-option>
+        <mat-option *ngFor="let iphone of iphoneList" [value]="iphone">{{iphone.name}} - {{iphone.price}}tl</mat-option>
       </mat-select>
     </mat-form-field>
         <mat-form-field appearance="fill" >
       <mat-label>Accessories</mat-label>
       <mat-select [formControl]="accessoriesOffersForm" multiple (selectionChange)="selectionChanged()">
-        <mat-option *ngFor="let accessory of accessoriesList" [value]="accessory">{{accessory.name}}</mat-option>
+        <mat-option *ngFor="let accessory of accessoriesList" [value]="accessory">{{accessory.name}} - {{accessory.price}}tl</mat-option>
       </mat-select>
     </mat-form-field>
     <mat-form-field appearance="fill" >
       <mat-label>Name</mat-label>
       <input matInput  type="text" [formControl]="offersNameForm" />
       </mat-form-field>
+      <div class="shown-price">
+       Current Offer Price:  {{shownPrice}}
+      </div>
     <button
       class="create-button"
       (click)="createOffer()"

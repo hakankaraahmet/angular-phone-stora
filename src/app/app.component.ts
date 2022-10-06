@@ -1,4 +1,4 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, OnDestroy, OnInit} from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 
 import { Router } from '@angular/router';
@@ -9,8 +9,8 @@ import { FirebaseService } from './services/firebase.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
 })
-export class AppComponent implements OnInit {
-  title = 'myApp';
+export class AppComponent implements OnInit, OnDestroy {
+  title = 'iphone-store';
   isSignedIn = false;
   isLoggedIn = false;
   isMember = false;
@@ -52,5 +52,9 @@ export class AppComponent implements OnInit {
       await this.firebaseService.logout();
        this.isSignedIn = false;
     }
+  }
+
+  ngOnDestroy(): void {
+    this.firebaseService.logout()
   }
 }

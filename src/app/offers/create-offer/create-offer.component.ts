@@ -22,7 +22,7 @@ export class CreateOfferComponent implements OnInit {
   iphoneOffersForm = new FormControl();
   accessoriesOffersForm = new FormControl();
   offersNameForm = new FormControl()
-
+  shownPrice : string = "";
   totalPrice: number = 0;
   productNames: string[] = [];
 
@@ -66,12 +66,13 @@ export class CreateOfferComponent implements OnInit {
         this.totalPrice += element.price;
         this.productNames.push(element.name);
       });
-    this.totalPrice = this.totalPrice * 0.8;
+    this.totalPrice = (this.totalPrice * 0.8);
+    this.shownPrice = this.totalPrice.toFixed(2);
   }
 
   createOffer(){
     let offerName = this.offersNameForm.value;
-    
+
     let offer : any = {
       name : offerName,
       price : this.totalPrice,

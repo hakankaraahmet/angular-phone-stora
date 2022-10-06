@@ -1,17 +1,5 @@
 <div class="form-container">
     <form [formGroup]="editNameForm" (ngSubmit)="onSubmit()">
-      <mat-form-field  appearance="fill">
-        <mat-label>Iphones</mat-label>
-        <mat-select [formControl]="iphoneOffersForm" [(value)]="defaultIphoneList"  multiple (selectionChange)="selectionChanged()">
-          <mat-option *ngFor="let iphone of iphoneList"  [value]="iphone.name">{{iphone.name}}</mat-option>
-        </mat-select>
-      </mat-form-field>
-          <!-- <mat-form-field appearance="fill" >
-        <mat-label>Accessories</mat-label>
-        <mat-select [formControl]="accessoriesOffersForm" multiple (selectionChange)="selectionChanged()">
-          <mat-option *ngFor="let accessory of accessoriesList" [value]="accessory">{{accessory.name}}</mat-option>
-        </mat-select>
-      </mat-form-field> -->
         <div class="form-control">
             <label class="form-label"> Offer Name: </label>
 

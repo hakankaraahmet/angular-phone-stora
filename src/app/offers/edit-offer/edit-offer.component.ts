@@ -3,13 +3,11 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { Accessories } from 'src/app/accessories-cards/accessories.model';
 import { Iphone } from 'src/app/iphone-cards/iphone.model';
 import * as fromApp from '../../store/app.reducer';
 import { Offer } from '../offers.model';
 import * as OfferActions from '../store/offers.actions';
 import * as IphoneCardsAction from '../../iphone-cards/store/iphone-cards.actions';
-import * as AccessoriesCardsAction from '../../accessories-cards/store/accessories-cards.actions';
 
 @Component({
   selector: 'app-edit-offer',
@@ -22,10 +20,6 @@ export class EditOfferComponent implements OnInit {
   selectedOffer: any;
   selectedId: string;
   offersList: Offer[];
-  iphoneOffersForm= new FormControl();
-  defaultIphoneList : Iphone[];
-  totalPrice: number;
-  productNames: string[];
 
   constructor(
     private store: Store<fromApp.AppState>,
@@ -39,7 +33,6 @@ export class EditOfferComponent implements OnInit {
       .select('iphone')
       .subscribe((s) => (this.iphoneList = s.iphoneList));
     this.store.dispatch(IphoneCardsAction.loadIphone());
-
 
     this.store
       .select('offers')
@@ -56,37 +49,14 @@ export class EditOfferComponent implements OnInit {
         this.editNameForm.patchValue({
           name: this.selectedOffer?.name,
         });
-        this.iphoneOffersForm.patchValue({
-          offeredDevice : this.selectedOffer?.offeredDevice
-        })
       }
     });
-    this.defaultIphoneList = this.iphoneOffersForm.value.offeredDevice;
-   this.iphoneOffersForm.setValue(this.defaultIphoneList)
-   console.log('this.iphoneOffersForm.value', this.iphoneOffersForm.value)
   }
 
   createForm() {
     this.editNameForm = new FormGroup({
       name: new FormControl(null, Validators.required),
     });
-
-    this.iphoneOffersForm = new FormControl({
-      offeredDevice: new FormControl(null, Validators.required),
-    });
-  }
-
-  selectionChanged() {
-    this.productNames = [];
-    this.totalPrice = 0;
-    let iphones: Iphone[] = this.defaultIphoneList;
-
-    if (iphones)
-      iphones.forEach((element) => {
-        this.totalPrice += element.price;
-        this.productNames.push(element.name);
-      });
-    this.totalPrice = this.totalPrice * 0.8;
   }
 
   onSubmit() {
@@ -95,14 +65,12 @@ export class EditOfferComponent implements OnInit {
     }
 
     const name = this.editNameForm.value.name;
-    const offeredDevice = this.iphoneOffersForm.value
-    const price = this.iphoneOffersForm.value.price;
 
     const offer: Offer = {
       id: this.selectedId,
-      name,
-      price: price,
-      offeredDevice: offeredDevice,
+      name: name,
+      price: this.selectedOffer.price,
+      offeredDevice: this.selectedOffer.device,
     };
 
     this.store.dispatch(OfferActions.updateOffer({ offer }));
