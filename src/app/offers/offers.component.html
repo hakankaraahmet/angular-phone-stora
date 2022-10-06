@@ -5,11 +5,11 @@
         <div class="card-info">
           <div class="card-header">{{ offer.name }}</div>
           <div >
-            <div style="text-decoration: underline">
-              Offer Items
+            <div style="text-decoration: underline; color: #f1af12; font-size: 16px; margin-top: 16px;">
+              Offered Devices
             </div>
             <div *ngFor="let offerItem of offer.offeredDevice" class="offered-items">
-              {{ offerItem }}
+              - {{ offerItem }}
             </div>
           </div>
         </div>

@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit} from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 
 import { Router } from '@angular/router';
@@ -9,10 +9,9 @@ import { FirebaseService } from './services/firebase.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
 })
-export class AppComponent implements OnInit, OnDestroy {
+export class AppComponent implements OnInit{
   title = 'iphone-store';
   isSignedIn = false;
-  isLoggedIn = false;
   isMember = false;
   constructor(
     public router: Router,
@@ -26,7 +25,6 @@ export class AppComponent implements OnInit, OnDestroy {
     if (localStorage.getItem('user') !== null) this.isSignedIn = true;
     else this.isSignedIn = false;
   }
-
 
   async onSignUp(email: string, password: string) {
     await this.firebaseService.signup(email, password);
@@ -52,9 +50,5 @@ export class AppComponent implements OnInit, OnDestroy {
       await this.firebaseService.logout();
        this.isSignedIn = false;
     }
-  }
-
-  ngOnDestroy(): void {
-    this.firebaseService.logout()
   }
 }
