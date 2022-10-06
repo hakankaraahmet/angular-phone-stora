@@ -1,15 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { Iphone } from 'src/app/iphone-cards/iphone.model';
-import * as fromApp from '../../store/app.reducer';
+
+import * as fromApp from '../../../../store/app.reducer';
 import * as OffersAction from '../store/offers.actions';
 import * as IphoneCardsAction from '../../iphone-cards/store/iphone-cards.actions';
 import * as AccessoriesCardsAction from '../../accessories-cards/store/accessories-cards.actions';
-import { Accessories } from 'src/app/accessories-cards/accessories.model';
-import { Offer } from '../offers.model';
+
+import { Iphone } from '../../iphone-cards/iphone.model';
+import { Accessories } from '../../accessories-cards/accessories.model';
+
 
 @Component({
   selector: 'app-create-offer',

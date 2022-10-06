@@ -3,7 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
-import * as fromApp from '../../store/app.reducer';
+import * as fromApp from '../../../../store/app.reducer';
 import { Iphone } from '../iphone.model';
 import * as  IphoneCardsAction from '../store/iphone-cards.actions'
 
@@ -79,7 +79,7 @@ export class EditIphoneComponent implements OnInit {
     const sku = this.editPhoneForm.value.sku
 
     const iphone : Iphone = {
-      id : this.selectedId, 
+      id : this.selectedId,
       name,
       price,
       mainImage,

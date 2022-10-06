@@ -3,7 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
-import * as fromApp from '../../store/app.reducer';
+import * as fromApp from '../../../../store/app.reducer';
 import { Accessories } from '../accessories.model';
 import * as AccessoriesCardsAction from '../store/accessories-cards.actions';
 
@@ -67,7 +67,7 @@ export class EditAccessoriesComponent implements OnInit {
     const sku = this.editAccessoriesForm.value.sku
 
     const accessory : Accessories = {
-      id : this.selectedId, 
+      id : this.selectedId,
       name,
       price,
       sku,

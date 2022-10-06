@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { Accessories } from './accessories.model';
-import * as fromApp from '../store/app.reducer';
+import * as fromApp from '../../../store/app.reducer';
 import * as AccessoriesCardsAction from './store/accessories-cards.actions';
 
 @Component({

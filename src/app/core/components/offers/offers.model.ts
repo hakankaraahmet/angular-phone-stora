@@ -1,5 +1,4 @@
-import { Accessories } from "../accessories-cards/accessories.model";
-import { Iphone } from "../iphone-cards/iphone.model";
+
 
 export class Offer {
   public offeredDevice: string[];
