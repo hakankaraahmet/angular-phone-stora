@@ -8,12 +8,12 @@
             <div style="text-decoration: underline; color: #f1af12; font-size: 16px; margin-top: 16px;">
               Offered Devices
             </div>
-            <div *ngFor="let offerItem of offer.offeredDevice" class="offered-items">
+            <div *ngFor="let offerItem of offer.offeredDevice" class="offered-item">
               - {{ offerItem }}
             </div>
           </div>
         </div>
-        <div class="offer-price">Offer Price : {{ offer.price }} Tl</div>
+        <div class="offer-price">Offer Price : {{ offer.price | currency : 'TL' : ''}} &#8378;</div>
         <div class="card-button-container">
           <a
             class="card-button"
