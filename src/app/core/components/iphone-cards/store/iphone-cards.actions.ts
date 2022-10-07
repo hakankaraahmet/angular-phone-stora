@@ -1,5 +1,5 @@
 import { createAction, props } from '@ngrx/store';
-import { Iphone } from '../models/iphone.model';
+import { Iphone } from '../../../models/iphone.model';
 
 //Loading
 export const loadIphone = createAction('[Iphone] Load Iphone');

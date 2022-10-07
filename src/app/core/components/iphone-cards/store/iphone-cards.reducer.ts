@@ -1,4 +1,4 @@
-import { Iphone } from '../models/iphone.model';
+import { Iphone } from '../../../models/iphone.model';
 import { Action, createReducer, on } from '@ngrx/store';
 import * as IphoneCardsActions from './iphone-cards.actions';
 

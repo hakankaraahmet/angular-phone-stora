@@ -1,4 +1,4 @@
-import { Accessories } from '../models/accessories.model';
+import { Accessories } from '../../../models/accessories.model';
 import { Action, createReducer, on } from '@ngrx/store';
 import * as AccessoriesCardsActions from './accessories-cards.actions';
 

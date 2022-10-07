@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { map, Observable } from 'rxjs';
-import { Iphone } from './models/iphone.model';
+import { Iphone } from '../../models/iphone.model';
 import * as fromApp from '../../store/app.reducer';
 import { Router } from '@angular/router';
 import * as IphoneCardsAction from './store/iphone-cards.actions';

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { map, Observable } from 'rxjs';
-import { Accessories } from './models/accessories.model';
+import { Accessories } from '../../models/accessories.model';
 import * as fromApp from '../../store/app.reducer';
 import * as AccessoriesCardsAction from './store/accessories-cards.actions';
 

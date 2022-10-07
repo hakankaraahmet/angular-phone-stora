@@ -1,4 +1,4 @@
-import { Offer } from '../models/offers.model';
+import { Offer } from '../../../models/offers.model';
 import { Action, createReducer, on } from '@ngrx/store';
 import * as OfferActions from './offers.actions';
 

@@ -9,8 +9,8 @@ import * as OffersAction from '../store/offers.actions';
 import * as IphoneCardsAction from '../../iphone-cards/store/iphone-cards.actions';
 import * as AccessoriesCardsAction from '../../accessories-cards/store/accessories-cards.actions';
 
-import { Iphone } from '../../iphone-cards/models/iphone.model';
-import { Accessories } from '../../accessories-cards/models/accessories.model';
+import { Iphone } from '../../../models/iphone.model';
+import { Accessories } from '../../../models/accessories.model';
 
 @Component({
   selector: 'app-create-offer',

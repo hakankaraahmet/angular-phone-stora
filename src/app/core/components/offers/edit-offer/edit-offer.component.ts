@@ -3,7 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import * as fromApp from '../../../store/app.reducer';
-import { Offer } from '../models/offers.model';
+import { Offer } from '../../../models/offers.model';
 import * as OfferActions from '../store/offers.actions';
 
 @Component({

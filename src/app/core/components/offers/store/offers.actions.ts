@@ -1,5 +1,5 @@
 import { createAction, props } from '@ngrx/store';
-import { Offer } from '../models/offers.model';
+import { Offer } from '../../../models/offers.model';
 
 //Loading
 export const loadOffer = createAction('[Offer] Load Offer');

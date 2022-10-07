@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { Offer } from './models/offers.model';
+import { Offer } from '../../models/offers.model';
 import * as fromApp from '../../store/app.reducer';
 import { Router } from '@angular/router';
 import * as OffersAction from './store/offers.actions';

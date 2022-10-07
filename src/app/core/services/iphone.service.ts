@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
-import { Iphone } from './models/iphone.model';
+import { Iphone } from '../models/iphone.model';
 
 @Injectable({
   providedIn: 'root',

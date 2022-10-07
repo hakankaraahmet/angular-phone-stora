@@ -3,7 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import * as fromApp from '../../../store/app.reducer';
-import { Iphone } from '../models/iphone.model';
+import { Iphone } from '../../../models/iphone.model';
 import * as  IphoneCardsAction from '../store/iphone-cards.actions'
 
 @Component({
