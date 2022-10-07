@@ -2,9 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { Subscription } from 'rxjs';
-import * as fromApp from '../../../../store/app.reducer';
-import { Iphone } from '../iphone.model';
+import * as fromApp from '../../../store/app.reducer';
+import { Iphone } from '../models/iphone.model';
 import * as  IphoneCardsAction from '../store/iphone-cards.actions'
 
 @Component({
@@ -17,7 +16,6 @@ export class EditIphoneComponent implements OnInit {
   selectedId: string;
   selectedIphone: Iphone | undefined;
   iphoneList: Iphone[];
-  phoneSubscription: Subscription;
   constructor(
     private store: Store<fromApp.AppState>,
     private router: Router,
@@ -29,26 +27,25 @@ export class EditIphoneComponent implements OnInit {
     this.createForm();
     this.store
       .select('iphone')
-      .subscribe((s) => (this.iphoneList = s.iphoneList));
+      .subscribe((s) => {(this.iphoneList = s.iphoneList)
+        if (s) {
+          this.editPhoneForm.patchValue({
+            name: this.selectedIphone?.name,
+            model: this.selectedIphone?.model,
+            price: this.selectedIphone?.price,
+            mainImage: this.selectedIphone?.mainImage,
+            color: this.selectedIphone?.color,
+            screenSize: this.selectedIphone?.screenSize,
+            description: this.selectedIphone?.description,
+            sku: this.selectedIphone?.sku,
+          });
+        }
+      });
     this.selectedId = this.route.snapshot.params['id'];
     this.route.params.subscribe((params: Params) => {
       this.selectedId = params['id'];
     });
     this.selectedIphone = this.iphoneList.find((e) => e.id === this.selectedId);
-    this.store.select('iphone').subscribe((phone) => {
-      if (phone) {
-        this.editPhoneForm.patchValue({
-          name: this.selectedIphone?.name,
-          model: this.selectedIphone?.model,
-          price: this.selectedIphone?.price,
-          mainImage: this.selectedIphone?.mainImage,
-          color: this.selectedIphone?.color,
-          screenSize: this.selectedIphone?.screenSize,
-          description: this.selectedIphone?.description,
-          sku: this.selectedIphone?.sku,
-        });
-      }
-    });
   }
 
   createForm() {

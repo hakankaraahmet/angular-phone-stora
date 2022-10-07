@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { Offer } from './offers.model';
-import * as fromApp from '../../../store/app.reducer';
+import { Offer } from './models/offers.model';
+import * as fromApp from '../../store/app.reducer';
 import { Router } from '@angular/router';
 import * as OffersAction from './store/offers.actions';
+import { map, Observable } from 'rxjs';
 
 @Component({
   selector: 'app-offers',
@@ -11,15 +12,14 @@ import * as OffersAction from './store/offers.actions';
   styleUrls: ['./offers.component.css'],
 })
 export class OffersComponent implements OnInit {
-  offersList: Offer[] = [];
+  offersList: Observable< Offer[]>;
   constructor(private store: Store<fromApp.AppState>, private router: Router) {}
 
   ngOnInit(): void {
     this.store.dispatch(OffersAction.loadOffer());
-    this.store
+    this.offersList = this.store
     .select('offers')
-    .subscribe((s) => (this.offersList = s.offersList));
-    this.store.select('offers').subscribe((s) => console.log(s.offersList));
+    .pipe(map((state) => state.offersList));
   }
 
   onDelete(id: string) {

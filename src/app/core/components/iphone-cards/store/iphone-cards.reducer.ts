@@ -1,4 +1,4 @@
-import { Iphone } from '../iphone.model';
+import { Iphone } from '../models/iphone.model';
 import { Action, createReducer, on } from '@ngrx/store';
 import * as IphoneCardsActions from './iphone-cards.actions';
 
@@ -46,6 +46,6 @@ const _iphoneReducer = createReducer(
   }),
 );
 
-export function IphoneCardsReducer(state: State | any, action: Action) {
+export function IphoneCardsReducer(state: State | undefined, action: Action) {
   return _iphoneReducer(state, action);
 }

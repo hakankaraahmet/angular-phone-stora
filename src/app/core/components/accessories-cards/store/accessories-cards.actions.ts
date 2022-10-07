@@ -1,7 +1,7 @@
 import { createAction, props } from '@ngrx/store';
-import { Accessories } from '../accessories.model';
+import { Accessories } from '../models/accessories.model';
 
-//Loading 
+//Loading
 export const loadAccessories = createAction('[Accessories] Load Accessories');
 
 export const loadAccessoriesSuccess = createAction(

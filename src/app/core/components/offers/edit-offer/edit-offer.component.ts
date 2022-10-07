@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-import * as fromApp from '../../../../store/app.reducer';
-import { Offer } from '../offers.model';
+import * as fromApp from '../../../store/app.reducer';
+import { Offer } from '../models/offers.model';
 import * as OfferActions from '../store/offers.actions';
 
 @Component({
@@ -28,21 +28,19 @@ export class EditOfferComponent implements OnInit {
     this.createForm();
     this.store
       .select('offers')
-      .subscribe((s) => (this.offersList = s.offersList));
+      .subscribe((s) => {(this.offersList = s.offersList)
+        if (s) {
+          this.editNameForm.patchValue({
+            name: this.selectedOffer?.name,
+          });
+        }});
     this.selectedId = this.route.snapshot.params['id'];
     this.route.params.subscribe((params: Params) => {
       this.selectedId = params['id'];
     });
     this.selectedOffer = this.offersList.find(
-      (e: any) => e.id === this.selectedId
+      (e: Offer) => e.id === this.selectedId
     );
-    this.store.select('offers').subscribe((offer) => {
-      if (offer) {
-        this.editNameForm.patchValue({
-          name: this.selectedOffer?.name,
-        });
-      }
-    });
   }
 
   createForm() {

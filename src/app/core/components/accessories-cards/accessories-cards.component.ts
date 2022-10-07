@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs';
-import { Accessories } from './accessories.model';
-import * as fromApp from '../../../store/app.reducer';
+import { map, Observable } from 'rxjs';
+import { Accessories } from './models/accessories.model';
+import * as fromApp from '../../store/app.reducer';
 import * as AccessoriesCardsAction from './store/accessories-cards.actions';
 
 @Component({
@@ -12,14 +12,14 @@ import * as AccessoriesCardsAction from './store/accessories-cards.actions';
   styleUrls: ['./accessories-cards.component.css'],
 })
 export class AccessoriesCardsComponent implements OnInit {
-  accessoriesList: Observable<{ iphoneList: Accessories[] }> | any;
+  accessoriesList: Observable<Accessories[]> ;
   constructor(private store: Store<fromApp.AppState>, private router: Router) {}
 
   ngOnInit(): void {
     this.store.dispatch(AccessoriesCardsAction.loadAccessories());
-    this.store
+    this.accessoriesList =  this.store
       .select('accessories')
-      .subscribe((s) => (this.accessoriesList = s.accessoriesList));
+      .pipe(map((state) => state.accessoriesList));
   }
 
   onRouteCreate() {

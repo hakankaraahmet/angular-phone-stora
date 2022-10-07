@@ -2,9 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { Subscription } from 'rxjs';
-import * as fromApp from '../../../../store/app.reducer';
-import { Accessories } from '../accessories.model';
+import * as fromApp from '../../../store/app.reducer';
+import { Accessories } from '../models/accessories.model';
 import * as AccessoriesCardsAction from '../store/accessories-cards.actions';
 
 @Component({
@@ -17,7 +16,6 @@ export class EditAccessoriesComponent implements OnInit {
   selectedId: string;
   selectedAccessory: Accessories | undefined;
   accessoriesList: Accessories[];
-  accessorySubscription: Subscription;
 
   constructor(
     private store: Store<fromApp.AppState>,
@@ -28,18 +26,9 @@ export class EditAccessoriesComponent implements OnInit {
   ngOnInit(): void {
     this.store.dispatch(AccessoriesCardsAction.loadAccessories());
     this.createForm();
-    this.store
-      .select('accessories')
-      .subscribe((s) => (this.accessoriesList = s.accessoriesList));
-    this.selectedId = this.route.snapshot.params['id'];
-    this.route.params.subscribe((params: Params) => {
-      this.selectedId = params['id'];
-    });
-    this.selectedAccessory = this.accessoriesList.find(
-      (e) => e.id === this.selectedId
-    );
-    this.store.select('accessories').subscribe((accessory) => {
-      if (accessory) {
+    this.store.select('accessories').subscribe((s) => {
+      this.accessoriesList = s.accessoriesList;
+      if (s) {
         this.editAccessoriesForm.patchValue({
           name: this.selectedAccessory?.name,
           price: this.selectedAccessory?.price,
@@ -47,6 +36,13 @@ export class EditAccessoriesComponent implements OnInit {
         });
       }
     });
+    this.selectedId = this.route.snapshot.params['id'];
+    this.route.params.subscribe((params: Params) => {
+      this.selectedId = params['id'];
+    });
+    this.selectedAccessory = this.accessoriesList.find(
+      (e) => e.id === this.selectedId
+    );
   }
 
   createForm() {
@@ -62,18 +58,20 @@ export class EditAccessoriesComponent implements OnInit {
       return;
     }
 
-    const name = this.editAccessoriesForm.value.name
-    const price = this.editAccessoriesForm.value.price
-    const sku = this.editAccessoriesForm.value.sku
+    const name = this.editAccessoriesForm.value.name;
+    const price = this.editAccessoriesForm.value.price;
+    const sku = this.editAccessoriesForm.value.sku;
 
-    const accessory : Accessories = {
-      id : this.selectedId,
+    const accessory: Accessories = {
+      id: this.selectedId,
       name,
       price,
       sku,
-    }
+    };
 
-    this.store.dispatch(AccessoriesCardsAction.updateAccessories({accessory}))
+    this.store.dispatch(
+      AccessoriesCardsAction.updateAccessories({ accessory })
+    );
     this.router.navigate(['/accessories-cards']);
   }
 }

@@ -8,25 +8,26 @@ import { AppComponent } from './app.component';
 import { IphoneCardsComponent } from './core/components/iphone-cards/iphone-cards.component';
 import { AccessoriesCardsComponent } from './core/components/accessories-cards/accessories-cards.component';
 import { OffersComponent } from './core/components/offers/offers.component';
-import * as fromApp from './store/app.reducer';
+import * as fromApp from './core/store/app.reducer';
 import { CreateIphoneComponent } from './core/components/iphone-cards/create-iphone/create-iphone.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { IphoneCardsEffects } from './core/components/iphone-cards/iphone-cards.effects';
+import { IphoneCardsEffects } from './core/components/iphone-cards/store/iphone-cards.effects';
 import { EditIphoneComponent } from './core/components/iphone-cards/edit-iphone/edit-iphone.component';
 import { EditAccessoriesComponent } from './core/components/accessories-cards/edit-accessories/edit-accessories.component';
 import { CreateAccessoriesComponent } from './core/components/accessories-cards/create-accessories/create-accessories.component';
-import { AccessoriesCardsEffects } from './core/components/accessories-cards/accessories-cards.effects';
+import { AccessoriesCardsEffects } from './core/components/accessories-cards/store/accessories-cards.effects';
 import { CreateOfferComponent } from './core/components/offers/create-offer/create-offer.component';
 import { EditOfferComponent } from './core/components/offers/edit-offer/edit-offer.component';
-import { OffersEffects } from './core/components/offers/offers.effects';
+import { OffersEffects } from './core/components/offers/store/offers.effects';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatInputModule } from '@angular/material/input';
-import { FirebaseService } from './services/firebase.service';
+
 import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { FirebaseService } from './core/services/firebase.service';
 @NgModule({
   declarations: [
     AppComponent,

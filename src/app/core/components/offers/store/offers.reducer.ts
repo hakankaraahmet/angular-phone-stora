@@ -1,4 +1,4 @@
-import { Offer } from '../offers.model';
+import { Offer } from '../models/offers.model';
 import { Action, createReducer, on } from '@ngrx/store';
 import * as OfferActions from './offers.actions';
 
@@ -46,6 +46,6 @@ const _OfferReducer = createReducer(
   }),
 );
 
-export function OfferReducer(state: State | any, action: Action) {
+export function OfferReducer(state: State | undefined, action: Action) {
   return _OfferReducer(state, action);
 }

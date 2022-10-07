@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { map, mergeMap, switchMap } from 'rxjs/operators';
-import { OffersService } from './offers.service';
+import { OffersService } from '../offers.service';
 import {
   addOffer,
   addOfferSuccess,
@@ -11,7 +11,7 @@ import {
   loadOfferSuccess,
   updateOffer,
   updateOfferSuccess,
-} from './store/offers.actions';
+} from './offers.actions';
 
 @Injectable()
 export class OffersEffects {

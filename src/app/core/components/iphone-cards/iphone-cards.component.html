@@ -1,6 +1,6 @@
 <div class="page-container">
   <div class="cards-container">
-    <div *ngFor="let iphone of iphoneList">
+    <div *ngFor="let iphone of iphoneList | async">
       <div class="card-container">
         <img src="{{ iphone.mainImage }}" class="card-image" />
         <div class="card-info">

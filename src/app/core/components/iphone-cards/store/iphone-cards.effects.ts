@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { map, mergeMap, switchMap } from 'rxjs/operators';
-import { IphoneCardsService } from './iphone-cards.service';
+import { IphoneCardsService } from '../iphone.service';
 import {
   addIphone,
   addIphoneSuccess,
@@ -11,7 +11,7 @@ import {
   loadIphoneSuccess,
   updateIphone,
   updateIphoneSuccess,
-} from './store/iphone-cards.actions';
+} from './iphone-cards.actions';
 
 @Injectable()
 export class IphoneCardsEffects {

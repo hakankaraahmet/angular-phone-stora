@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-import * as fromApp from '../../../../store/app.reducer';
+import * as fromApp from '../../../store/app.reducer';
 import * as IphoneCardsAction from '../store/iphone-cards.actions';
 
 @Component({

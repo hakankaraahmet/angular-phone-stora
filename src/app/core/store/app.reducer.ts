@@ -1,8 +1,8 @@
 import { ActionReducerMap } from "@ngrx/store";
 
-import * as fromIphone from "../core/components/iphone-cards/store/iphone-cards.reducer"
-import * as fromAccessories from "../core/components/accessories-cards/store/accessories-cards.reducer"
-import * as fromOffers from "../core/components/offers/store/offers.reducer"
+import * as fromIphone from "../components/iphone-cards/store/iphone-cards.reducer"
+import * as fromAccessories from "../components/accessories-cards/store/accessories-cards.reducer"
+import * as fromOffers from "../components/offers/store/offers.reducer"
 
 export interface AppState {
     iphone: fromIphone.State ;

@@ -1,28 +1,42 @@
 <div class="form-container">
-    <mat-form-field  appearance="fill">
+  <form [formGroup]="offersForm" (ngSubmit)="createOffer()">
+    <mat-form-field appearance="fill">
       <mat-label>Iphones</mat-label>
-      <mat-select [formControl]="iphoneOffersForm" multiple (selectionChange)="selectionChanged()">
-        <mat-option *ngFor="let iphone of iphoneList" [value]="iphone">{{iphone.name}} - {{ iphone.price | currency : 'TL' : ''}} &#8378;</mat-option>
+      <mat-select
+        multiple
+        (selectionChange)="selectionChanged()"
+        formControlName="iphones"
+      >
+        <mat-option *ngFor="let iphone of iphoneList |async" [value]="iphone"
+          >{{ iphone.name }} -
+          {{ iphone.price | currency: "TL":"" }} &#8378;</mat-option
+        >
       </mat-select>
     </mat-form-field>
-        <mat-form-field appearance="fill" >
+    <mat-form-field appearance="fill">
       <mat-label>Accessories</mat-label>
-      <mat-select [formControl]="accessoriesOffersForm" multiple (selectionChange)="selectionChanged()">
-        <mat-option *ngFor="let accessory of accessoriesList" [value]="accessory">{{accessory.name}} - {{ accessory.price | currency : 'TL' : ''}} &#8378;</mat-option>
+      <mat-select
+        multiple
+        (selectionChange)="selectionChanged()"
+        formControlName="accessories"
+      >
+        <mat-option
+          *ngFor="let accessory of accessoriesList |async"
+          [value]="accessory"
+          >{{ accessory.name }} -
+          {{ accessory.price | currency: "TL":"" }} &#8378;</mat-option
+        >
       </mat-select>
     </mat-form-field>
-    <mat-form-field appearance="fill" >
+    <mat-form-field appearance="fill">
       <mat-label>Name</mat-label>
-      <input matInput  type="text" [formControl]="offersNameForm" />
-      </mat-form-field>
-      <div class="shown-price">
-       Current Offer Price:  {{ totalPrice | currency : 'TL' : ''}} &#8378;
-      </div>
-    <button
-      class="create-button"
-      (click)="createOffer()"
-    >
-      Create Offer
-    </button>
-
+      <input matInput type="text" formControlName="name" />
+    </mat-form-field>
+  </form>
+  <div class="shown-price">
+    Current Offer Price: {{ totalPrice | currency: "TL":"" }} &#8378;
+  </div>
+  <button class="create-button" type="submit" (click)="createOffer()">
+    > Create Offer
+  </button>
 </div>

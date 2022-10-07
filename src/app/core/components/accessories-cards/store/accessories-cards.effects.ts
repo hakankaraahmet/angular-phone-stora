@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { map, mergeMap, switchMap } from 'rxjs/operators';
-import { AccessoriesCardsService } from './accessories-cards.service';
+import { AccessoriesCardsService } from '../accessories.service';
 import {
   addAccessories,
   addAccessoriesSuccess,
@@ -11,7 +11,7 @@ import {
   loadAccessoriesSuccess,
   updateAccessories,
   updateAccessoriesSuccess,
-} from './store/accessories-cards.actions';
+} from './accessories-cards.actions';
 
 @Injectable()
 export class AccessoriesCardsEffects {

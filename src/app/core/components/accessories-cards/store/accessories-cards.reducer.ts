@@ -1,4 +1,4 @@
-import { Accessories } from '../accessories.model';
+import { Accessories } from '../models/accessories.model';
 import { Action, createReducer, on } from '@ngrx/store';
 import * as AccessoriesCardsActions from './accessories-cards.actions';
 
@@ -46,6 +46,6 @@ const _accessoriesReducer = createReducer(
   }),
 );
 
-export function AccessoriesCardsReducer(state: State | any, action: Action) {
+export function AccessoriesCardsReducer(state: State | undefined, action: Action) {
   return _accessoriesReducer(state, action);
 }
